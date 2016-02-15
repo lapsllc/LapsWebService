@@ -1,5 +1,7 @@
 # Laps Web Service
 
+[![Build Status](https://travis-ci.org/lapsllc/LapsWebService.svg?branch=master)](https://travis-ci.org/lapsllc/LapsWebService)
+
 v1.0.0
 
 ### Stack
