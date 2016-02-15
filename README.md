@@ -1,12 +1,9 @@
-# laps-express-web-service
+# Laps Web Service
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0.
+v1.0.0
 
-## Getting Started
+### Stack
 
-### Prerequisites
-
-- [Git](https://git-scm.com/)
 - [Node.js and npm](nodejs.org) Node ^4.2.3, npm ^2.14.7
 - [Bower](bower.io) (`npm install --global bower`)
 - [Grunt](http://gruntjs.com/) (`npm install --global grunt-cli`)
