@@ -3,16 +3,16 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var GiftSchema = new mongoose.Schema({
-  name: String,
-  info: String,
-  active: Boolean,
+  _state: {type: Number, default: 0},
 
-  _state: Number,
-
+  product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
+  source: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   target: {
     email: String,
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-  }
+  },
+
+  userInfo: String
 });
 
 GiftSchema.methods = {

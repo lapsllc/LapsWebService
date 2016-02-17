@@ -66,7 +66,15 @@ export function index(req, res) {
   .catch(handleError(res));
 }
 
-export function latest(req, res) {
+export function featured(req, res) {
+  if (!_.isInteger(req.params.limit) || req.params.limit > 8) {
+    req.params.limit = 8;
+  }
+
+  if (!_.isInteger(req.params.offset)) {
+    req.params.offset = 0;
+  }
+
   Brand.findAsync({limit: req.params.limit, skip: req.params.offset})
   .then(respondWithResult(res))
   .catch(handleError(res));

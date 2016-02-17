@@ -1,9 +1,10 @@
 'use strict';
 
-var express = require('express');
-var controller = require('./gift.controller');
+import {Router} from 'express';
+import * as controller from './gift.controller';
+import * as auth from '../../auth/auth.service';
 
-var router = express.Router();
+var router = new Router();
 
 router.get('/', auth.hasRole('admin'), controller.index);
 router.get('/:id', auth.hasRole('admin'), controller.show);

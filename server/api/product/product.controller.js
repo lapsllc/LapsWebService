@@ -88,7 +88,20 @@ export function create(req, res) {
 }
 
 export function raiseToGift(req, res) {
-  Product.create
+  Product.findByIdAsync(req.params.id)
+  .then(handleEntityNotFound(res))
+  .then(function (product) {
+    return Gift.createAsync({
+      product: product._id,
+      source: req.user,
+      target: {
+        email: req.body.targetEmail,
+        user: req.body.targetUserId
+      }
+    })
+  })
+  .then(respondWithResult(res, 201))
+  .catch(handleError(res))
 }
 
 // Updates an existing Product in the DB
