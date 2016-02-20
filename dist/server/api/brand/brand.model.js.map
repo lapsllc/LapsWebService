@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "sources": [
+    "../../../../server/api/brand/brand.model.js"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAY,CAAC;;;;;AAEb,IAAI,QAAQ,GAAG,OAAO,CAAC,UAAU,CAAC,CAAC,YAAY,CAAC,OAAO,CAAC,UAAU,CAAC,CAAC,CAAC;;AAErE,IAAI,WAAW,GAAG,IAAI,QAAQ,CAAC,MAAM,CAAC;AACpC,MAAI,EAAE,MAAM;AACZ,MAAI,EAAE,MAAM;AACZ,QAAM,EAAE,OAAO;;AAEf,QAAM,EAAE,CAAC,EAAC,GAAG,EAAE,MAAM,EAAE,KAAK,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,EAAC,CAAC;AACpD,iBAAe,EAAE,CAAC,EAAC,IAAI,EAAE,QAAQ,CAAC,MAAM,CAAC,KAAK,CAAC,QAAQ,EAAE,GAAG,EAAE,SAAS,EAAC,CAAC;AACzE,aAAW,EAAE,MAAM;CACpB,CAAC,CAAC;;qBAEY,QAAQ,CAAC,KAAK,CAAC,OAAO,EAAE,WAAW,CAAC",
+  "file": "brand.model.js",
+  "sourcesContent": [
+    "'use strict';\n\nvar mongoose = require('bluebird').promisifyAll(require('mongoose'));\n\nvar BrandSchema = new mongoose.Schema({\n  name: String,\n  info: String,\n  active: Boolean,\n\n  colors: [{red: Number, green: Number, blue: Number}],\n  popularProducts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],\n  description: String\n});\n\nexport default mongoose.model('Brand', BrandSchema);\n"
+  ]
+}
