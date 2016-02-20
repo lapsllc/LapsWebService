@@ -19,6 +19,8 @@ import passport from 'passport';
 import session from 'express-session';
 import connectMongo from 'connect-mongo';
 import mongoose from 'mongoose';
+
+
 var mongoStore = connectMongo(session);
 
 export default function (app) {
@@ -50,20 +52,20 @@ export default function (app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
-  if ('test' !== env) {
-    app.use(lusca({
-      csrf: {
-        angular: true
-      },
-      xframe: 'SAMEORIGIN',
-      hsts: {
-        maxAge: 31536000, //1 year, in seconds
-        includeSubDomains: true,
-        preload: true
-      },
-      xssProtection: true
-    }));
-  }
+    //if (env !== 'test') {
+    //  app.use(lusca({
+    //    csrf: {
+    //      angular: true
+    //    },
+    //    xframe: 'SAMEORIGIN',
+    //    hsts: {
+    //      maxAge: 31536000, //1 year, in seconds
+    //      includeSubDomains: true,
+    //      preload: true
+    //    },
+    //    xssProtection: true
+    //  }));
+    //}
 
   app.set('appPath', path.join(config.root, 'client'));
 

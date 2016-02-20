@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/lapsexpresswebservice-test'
+    uri: 'mongodb://main:1234456789@ds039195.mongolab.com:39195/laps'
   },
   sequelize: {
     uri: 'sqlite://',

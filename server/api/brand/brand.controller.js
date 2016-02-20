@@ -61,23 +61,23 @@ function handleError(res, statusCode) {
 
 // Gets a list of Brands
 export function index(req, res) {
-  Brand.findAsync()
-  .then(respondWithResult(res))
-  .catch(handleError(res));
-}
+  if (req.query.ref === "featured") {
+    if (!_.isInteger(req.params.limit) || req.params.limit > 8) {
+      req.params.limit = 8;
+    }
 
-export function featured(req, res) {
-  if (!_.isInteger(req.params.limit) || req.params.limit > 8) {
-    req.params.limit = 8;
+    if (!_.isInteger(req.params.offset)) {
+      req.params.offset = 0;
+    }
+
+    Brand.findAsync({limit: req.params.limit, skip: req.params.offset, sort: {date: -1}})
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+  } else {
+    Brand.findAsync()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
   }
-
-  if (!_.isInteger(req.params.offset)) {
-    req.params.offset = 0;
-  }
-
-  Brand.findAsync({limit: req.params.limit, skip: req.params.offset})
-  .then(respondWithResult(res))
-  .catch(handleError(res));
 }
 
 // Gets a single Brand from the DB

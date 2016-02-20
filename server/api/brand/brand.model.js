@@ -4,6 +4,7 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var BrandSchema = new mongoose.Schema({
   name: String,
+  locale: String,
   info: String,
   active: Boolean,
 
